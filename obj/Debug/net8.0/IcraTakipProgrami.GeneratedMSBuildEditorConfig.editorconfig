@@ -1,0 +1,151 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = IcraTakipProgrami
+build_property.RootNamespace = IcraTakipProgrami
+build_property.ProjectDir = C:\Users\Görkem\source\repos\IcraTakipProgrami\IcraTakipProgrami\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Görkem\source\repos\IcraTakipProgrami\IcraTakipProgrami
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Avukatlar/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXZ1a2F0bGFyXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Avukatlar/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXZ1a2F0bGFyXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Avukatlar/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXZ1a2F0bGFyXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Avukatlar/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXZ1a2F0bGFyXGluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/IcraTakibi/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNyYVRha2liaVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/IcraTakibi/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNyYVRha2liaVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/IcraTakibi/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNyYVRha2liaVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/IcraTakibi/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNyYVRha2liaVxpbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Ihtarlar/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWh0YXJsYXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Ihtarlar/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWh0YXJsYXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Ihtarlar/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWh0YXJsYXJcaW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Musteriler/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzdGVyaWxlclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Musteriler/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzdGVyaWxlclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Musteriler/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzdGVyaWxlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Musteriler/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzdGVyaWxlclxpbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Roles/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Roles/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Roles/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcaW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Urunler/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXJ1bmxlclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Urunler/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXJ1bmxlclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Urunler/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXJ1bmxlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Urunler/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXJ1bmxlclxpbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Users/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Görkem/source/repos/IcraTakipProgrami/IcraTakipProgrami/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-h9x6tix5le

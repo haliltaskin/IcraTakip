@@ -1,0 +1,140 @@
+﻿@model IcraTakipProgrami.Models.IcraTakip.IcraTakipCreateViewModel
+
+<div class="container">
+    <h2>İcra Takibi Oluştur</h2>
+    <form asp-controller="IcraTakibi" asp-action="Create" method="post">
+        <div class="row justify-content-center">
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="Borclu" class="form-label">Borclu</label>
+                    <select id="musteriDropdown" onclick="abc()" class="form-select form-select-md" asp-for="Borclu" required>
+                        <option value="">Seçiniz</option>
+                        @foreach (var musteri in Model.MusteriEkleListesi)
+                        {
+                            <option value="@musteri.Value">@musteri.Text</option>
+                        }
+                    </select>
+                </div>
+
+
+                <div class="mb-3">
+                    <label asp-for="IhtarKonusuUrun" class="form-label">İhtar Konusu Ürün</label>
+                    <select id="urunDropdown" onclick="urunSecildi()" class="form-select form-select-md" asp-for="IhtarKonusuUrun" required>
+                        <option value="">Seçiniz</option>
+                        <!-- Burada, ürünlerin listesi doldurulacak -->
+                    </select>
+                </div>
+
+
+                <div class="mb-3">
+                    <label asp-for="Avukat" class="form-label">Avukat</label>
+                    <select id="avukatDropDown" class="form-select form-select-md" asp-for="Avukat">
+                        <option value=""> Seçiniz</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="TakipTarihi" class="form-label">Takip Tarihi</label>
+                    <input value="" type="date" asp-for="TakipTarihi" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="TakipTipi" class="form-label">Takip Tipi</label>
+                    <input type="text" asp-for="TakipTipi" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="Ihtarlar" class="form-label">Ihtarlar</label>
+                    <select id="IhtarlarDropDown" class="form-select form-select-md" asp-for="Ihtarlar">
+                        <option value=""> Seçiniz</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="IcraMudurlugu" class="form-label">İcra Müdürlüğü</label>
+                    <input asp-for="IcraMudurlugu" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    function abc() {
+        var musteriId = document.getElementById("musteriDropdown").value;
+
+        // AJAX isteği yap
+        $.ajax({
+            type: "GET",
+            url: "/IcraTakibi/GetUrunler",
+            data: { musteriId: musteriId },
+            success: function (data) {
+                // Gelen veriyi kullanarak ürün dropdown'ını güncelle
+                var urunDropdown = document.getElementById("musteriDropdown").parentNode.nextElementSibling.querySelector("select");
+                urunDropdown.innerHTML = "";
+                data.forEach(function (urun) {
+                    var option = document.createElement("option");
+                    option.value = urun.value;
+                    option.text = urun.text;
+                    urunDropdown.appendChild(option);
+                });
+
+            }
+        });
+    }
+
+
+
+    function urunSecildi() {
+        var urunId = document.getElementById("urunDropdown").value;
+
+        $.ajax({
+            type: "GET",
+            url: "/IcraTakibi/GetIhtarlarByUrun",
+            data: { urunId: urunId },
+            success: function (ihtarData) {
+                // Gelen veriyi kullanarak ihtarlar dropdown'ını güncelle
+                var ihtarlarDropdown = document.getElementById("IhtarlarDropDown");
+                ihtarlarDropdown.innerHTML = "";
+                ihtarData.forEach(function (ihtar) {
+                    var option = document.createElement("option");
+                    option.value = ihtar.value;
+                    option.text = ihtar.text;
+                    ihtarlarDropdown.appendChild(option);
+                });
+            }
+        });
+
+        // AJAX isteği yap
+        $.ajax({
+            type: "GET",
+            url: "/IcraTakibi/GetAvukatlarByUrun",
+            data: { urunId: urunId },
+            success: function (data) {
+                // Gelen veriyi kullanarak avukat dropdown'ını güncelle
+                var avukatDropdown = document.getElementById("avukatDropDown");
+                avukatDropdown.innerHTML = "";
+                data.forEach(function (avukat) {
+                    var option = document.createElement("option");
+                    option.value = avukat.value;
+                    option.text = avukat.text;
+                    avukatDropdown.appendChild(option);
+                });
+            }
+        });
+    }
+    
+
+</script>
+
+
+
+
+
+
+

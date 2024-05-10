@@ -1,0 +1,58 @@
+﻿@model IcraTakipProgrami.Models.IcraTakip.IcraTakipCreateViewModel
+@{
+
+    <div class="container">
+        <h2>İcra Güncelle</h2>
+
+        <form asp-controller="IcraTakibi" asp-action="Edit" method="post">
+             <input type="hidden" asp-for="Id">
+            <div class="mb-3">
+                <label asp-for="Borclu" class="form-label">Müşteri</label>
+                <select id="musteriDropdown" class="form-select form-select-md" asp-for="Borclu">
+                    <option value="">Seçiniz</option>
+                    @foreach (var musteri in Model.MusteriEkleListesi)
+                    {
+                        <option value="@musteri.Value">@musteri.Text</option>
+                    }
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Avukat" class="form-label">Avukat</label>
+                <select id="avukatDropdown" class="form-select form-select-md" asp-for="Avukat">
+                    <option value="">Seçiniz</option>
+                    @foreach (var avukat in Model.AvukatEkleListesi)
+                    {
+                        <option value="@avukat.Value">@avukat.Text</option>
+                    }
+                </select>
+            </div>
+        
+            <div class="mb-3">
+                <label asp-for="TakipTarihi" class="form-label">TakipTarihi</label>
+                <input type="date"  asp-for="TakipTarihi" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="TakipTipi" class="form-label">TakipTipi</label>
+                <input type="date" value="@Model.TakipTipi?.Trim()" asp-for="TakipTipi" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="Ihtarlar" class="form-label">Ihtarlar</label>
+                <input asp-for="Ihtarlar"  class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="IhtarKonusuUrun" class="form-label">İhtar Konusu Ürun</label>
+                <input asp-for="IhtarKonusuUrun"  class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="IcraMudurlugu" class="form-label">İcra Müdürlüğü</label>
+                <input asp-for="IcraMudurlugu" value="@Model.IcraMudurlugu?.Trim()" class="form-control">
+            </div>
+
+
+            <div class="mb-3">
+                <button style="margin-bottom: 40px;" type="submit" class="btn btn-primary"> Kaydet</button>
+            </div>
+        </form>
+    </div>
+}

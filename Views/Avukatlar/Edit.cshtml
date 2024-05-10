@@ -1,0 +1,126 @@
+﻿@model IcraTakipProgrami.Models.Avukatlar
+@{
+    <div class="container">
+        <h2>Avukat Güncelle</h2>
+
+        <form asp-controller="Avukatlar" asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="Ad" class="form-label">Ad</label>
+                        <input asp-for="Ad" value="@Model.Ad?.Trim()" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="Soyad" class="form-label">Soyad</label>
+                        <input asp-for="Soyad" value="@Model.Soyad?.Trim()" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="KullaniciAdi" class="form-label">Kullanıcı Adı</label>
+                        <input maxlength="15" value="@Model.KullaniciAdi?.Trim()" asp-for="KullaniciAdi" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="Tckn" class="form-label">Tckn</label>
+                        <input type="number" maxlength="11" value="@Model.Tckn?.Trim()" asp-for="Tckn" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="VergiNo" class="form-label">Vergi No</label>
+                        <input type="number" maxlength="15" value="@Model.VergiNo?.Trim()" asp-for="VergiNo" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="CepNo" class="form-label">Cep No</label>
+                        <input type="number" maxlength="11" value="@Model.CepNo?.Trim()" asp-for="CepNo" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="AvansHesapSubesi" class="form-label">Avans Hesap Subesi</label>
+                        <input maxlength="15" value="@Model.AvansHesapSubesi?.Trim()" asp-for="AvansHesapSubesi" name="AvansHesapSubesi" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="AvansHesapNo" class="form-label">Avans Hesap No</label>
+                        <input type="number" maxlength="15" value="@Model.AvansHesapNo?.Trim()" asp-for="AvansHesapNo" name="AvansHesapNo" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="AvukatTipi" class="form-label">Avukat Tipi</label>
+                        <input  maxlength="15" value="@Model.AvukatTipi?.Trim()" asp-for="AvukatTipi" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="VadesizHesapSubesi" class="form-label">Vadesiz Hesap Subesi</label>
+                        <input maxlength="15" value="@Model.VadesizHesapSubesi?.Trim()" asp-for="VadesizHesapSubesi" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="VadesizHesapNo" class="form-label">Vadesiz Hesap No</label>
+                        <input type="number" maxlength="15" value="@Model.VadesizHesapNo?.Trim()" asp-for="VadesizHesapNo" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="EmailAdres" class="form-label">Email Adres</label>
+                        <input maxlength="15" value="@Model.EmailAdres?.Trim()" asp-for="EmailAdres" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="TamAdres" class="form-label">Tam Adres</label>
+                        <input maxlength="15" value="@Model.TamAdres?.Trim()" asp-for="TamAdres" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="HesapAktifMi" class="form-label">Hesap Aktif Mi</label>
+                        <input type="checkbox" class="form-check-input" asp-for="HesapAktifMi" style="margin-left: 10px;">
+                    </div>
+                </div>
+            </div>
+
+            <button style="margin-bottom: 40px;" type="submit" class="btn btn-primary"> Güncelle</button>
+        </form>
+
+    </div>
+}
+
+
+<style>
+
+    /* Up ve Down oklarını gizle */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield; /* Firefox için */
+    }
+</style>

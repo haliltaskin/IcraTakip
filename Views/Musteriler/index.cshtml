@@ -1,0 +1,214 @@
+﻿@model IEnumerable<IcraTakipProgrami.Models.Musteri.MusteriViewModel>
+
+<div class="container">
+
+
+    <div class="modal fade bd-example-modal-lg" id="create" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal içeriği buraya gelecek -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content halildeneme">
+                <!-- AJAX isteği sonucunda dönen HTML içeriği buraya yerleştirilecek -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="table-responsive" style="max-width: 100%; overflow-x: auto;">
+        <button type="button" class="btn btn-primary mb-3" style="float:right" onclick="Create()">Müşteri Ekle</button>
+
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Ad</th>
+                    <th scope="col">Soyad</th>
+                    <th scope="col">TCKN</th>
+                    <th scope="col">Doğum Tarihi</th>
+                    <th scope="col">Cinsiyet</th>
+                    <th scope="col">Baba Adı</th>
+                    <th scope="col">Anne Adı</th>
+                    <th scope="col">Şehir</th>
+                    <th scope="col">İlçe</th>
+                    <th scope="col">Semt</th>
+                    <th scope="col">Mistral Müşteri Tipi</th>
+                    <th scope="col">Hayatta mı?</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var musteri in Model)
+                {
+                    <tr>
+                        <td>@musteri.Id</td>
+                        <td>@musteri.Ad</td>
+                        <td>@musteri.Soyad</td>
+                        <td>@musteri.Tckn</td>
+                        <td>@musteri.DogumTarihi</td>
+                        <td>@musteri.Cinsiyet</td>
+                        <td>@musteri.BabaAd</td>
+                        <td>@musteri.AnneAd</td>
+                        <td>@musteri.SehirAd</td>
+                        <td>@musteri.IlceAd</td>
+                        <td>@musteri.Semt</td>
+                        <td>@musteri.MistralMusteriTipi</td>
+                        <td>
+                            @if (musteri.HayattaMı)
+                            {
+                                <span>Evet</span>
+                            }
+                            else
+                            {
+                                <span>Hayır</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>&#8942;</span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <div style="width:50px; margin-left:30px;text-align:center">
+                                        <button type="submit" onclick="openEditModal(@musteri.Id)" class="btn btn-success" style="width:100px;margin:auto; height:30px">Güncelle</button>
+
+                                    <form asp-action="Delete" method="post" onsubmit="return confirm('emin misiniz')" style="display: inline-block;">
+                                        <input type="hidden" value="@musteri.Id" name="id">
+                                        <button style="width:100px;margin-top:10px; height:30px" type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .table-responsive {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+        .table-responsive::-webkit-scrollbar {
+            height: 5px; /* Yatay kaydırma çubuğu yüksekliği */
+            background-color: #f5f5f5; /* Kaydırma çubuğu arka plan rengi */
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb {
+            background-color: #888; /* Kaydırma çubuğu rengi */
+            border-radius: 5px; /* Kenar yuvarlama */
+        }
+
+    .container {
+        max-width: 1200px; /* Tablonun genişliğini artırabilirsiniz */
+        margin: 0 auto; /* Tabloyu merkezlemek için */
+    }
+</style>
+
+<script>
+    function Create() {
+
+        var url = '@Url.Action("CreateModal", "Musteriler")';
+        $.ajax({
+            type: 'get',
+            url: url
+        }).then((result) => {
+            $(".modal-content").html(result);
+            $("#create").modal('show');
+        }).catch((e) => {
+            alert("didn't work");
+        });
+    }
+
+    function openEditModal(id) {
+        var url = '/Musteriler/EditModal/' + id;
+        console.log(url); // Kontrol için URL'yi yazdır
+        $.ajax({
+            type: 'get',
+            url: url
+        }).then((result) => {
+            debugger;
+            $(".halildeneme").html(result);
+            $("#edit").modal('show');
+        }).catch((e) => {
+            alert("Bir hata oluştu.");
+        });
+    }
+        
+    //     function selectIlce() {
+
+    //         var url = '@Url.Action("CreateModalIlce", "Musteriler")';
+    //     $.ajax({
+    //         type: 'get',
+    //         url: url
+    //     }).then((result) => {
+    //         $(".modal-content").html(result);
+    //     }).catch((e) => {
+    //         alert("didn't work");
+    //     });
+    // }
+
+
+
+        // // Şehir dropdown listesi değiştiğinde tetiklenecek fonksiyon
+        // document.getElementById("sehirDropDown").addEventListener("change", function () {
+        //     debugger;
+        //     // Seçilen şehir ID'sini al
+        //     var secilenSehirId = this.options[this.selectedIndex].getAttribute('itemid');
+        //     var url = '/Musteriler/CreateModal';
+        //     // AJAX ile ilgili şehrin ilçelerini getir
+        //     $.ajax({
+        //         url: url, // İlçeleri getirilecek Action'ın URL'si
+        //         type: 'GET',
+        //         data: { sehirId: secilenSehirId }, // Seçilen şehir ID'sini parametre olarak gönder
+        //         success: function (data) {
+        //             // Başarılı bir şekilde veriler alındığında yapılacak işlemler
+        //             // İlçe dropdown listesini temizle
+        //             $('#ilceDropDown').empty();
+        //             // Gelen verileri ilçe dropdown listesine ekle
+        //             $.each(data, function (key, value) {
+        //                 $('#ilceDropDown').append('<option value="' + value.Value + '">' + value.Text + '</option>');
+        //             });
+        //         },
+        //         error: function () {
+        //             // Hata durumunda yapılacak işlemler
+        //             alert('Bir hata oluştu, ilçeler getirilemedi.');
+        //         }
+        //     });
+        // });
+    
+</script>
+
+<style>
+    .table-responsive {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+        .table-responsive::-webkit-scrollbar {
+            height: 5px; /* Yatay kaydırma çubuğu yüksekliği */
+            background-color: #f5f5f5; /* Kaydırma çubuğu arka plan rengi */
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb {
+            background-color: #888; /* Kaydırma çubuğu rengi */
+            border-radius: 5px; /* Kenar yuvarlama */
+        }
+
+    .container {
+        max-width: 1200px; /* Tablonun genişliğini artırabilirsiniz */
+        margin: 0 auto; /* Tabloyu merkezlemek için */
+    }
+
+    .table-responsive::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Kaydırma çubuğu izleme arka plan rengi */
+    }
+</style>

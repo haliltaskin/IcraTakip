@@ -1,0 +1,170 @@
+﻿@model IEnumerable<IcraTakipProgrami.Models.Ihtar.IhtarViewModel>
+@{
+
+
+    <div class="modal fade bd-example-modal-lg" id="create" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal içeriği buraya gelecek -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" id="edit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content halildeneme">
+                <!-- Modal içeriği buraya gelecek -->
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+    <div class="table-responsive" style="max-width: 100%; overflow-x: auto;">
+        <button type="button" style="float:right; margin-bottom:30px class="btn btn-primary" onclick="Create()">İhtar Ekle</button>
+
+        <table class="table" style="width: 100%; margin: 0 auto;">
+            <thead>
+                <tr>
+                    <th>Borçlu</th>
+                    <th>Müşteri Ürünü</th>
+                    <th>Noter Adı</th>
+                    <th>Ihtar Tarihi</th>
+                    <th>Ihtarname Süresi</th>
+                    <th>Tebliğ Tarihi</th>
+                    <th>Kat Tarihi</th>
+                    <th>İhtarname Nakit Tutarı</th>
+                    <th>İhtarname Gayri Nakit Tutarı</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Ihtarlar in Model)
+                {
+                    <tr>
+                        <td>@Ihtarlar.BorcluAd</td>
+                        <td>@Ihtarlar.MusteriUrun</td>
+                        <td>@Ihtarlar.NoterAd</td>
+                        <td>@Ihtarlar.IhtarTarih</td>
+                        <td>@Ihtarlar.IhtarnameSuresi</td>
+                        <td>@Ihtarlar.TebligTarihi</td>
+                        <td>@Ihtarlar.KatTarih</td>
+                        <td>@Ihtarlar.IhtarnameNakitTutarı</td>
+                        <td>@Ihtarlar.IhtarnameGayriNakitTutarı</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>&#8942;</span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <div style="width:50px; margin-left:30px;text-align:center">
+                                        <button type="submit" onclick="openEditModal(@Ihtarlar.Id)" class="btn btn-success" style="width:100px;margin:auto; height:30px">Güncelle</button>
+
+                                    <form asp-action="Delete" method="post" onsubmit="return confirm('emin misiniz')" style="display: inline-block;">
+                                        <input type="hidden" value="@Ihtarlar.Id" name="id">
+                                        <button style="width:100px;margin-top:10px; height:30px" type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                    </div>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    <script>
+        function Create() {
+
+            var url = '@Url.Action("CreateModal", "Ihtarlar")';
+            $.ajax({
+                type: 'get',
+                url: url,
+            }).then((result) => {
+                $(".modal-content").html(result);
+                $("#create").modal('show');
+            }).catch((e) => {
+                alert("didn't work");
+            });
+        }
+
+        function openEditModal(id) {
+            var url = '/Ihtarlar/EditModal/' + id;
+            console.log(url); // Kontrol için URL'yi yazdır
+            $.ajax({
+                type: 'get',
+                url: url
+            }).then((result) => {
+                debugger;
+                $(".halildeneme").html(result);
+                $("#edit").modal('show');
+            }).catch((e) => {
+                alert("Bir hata oluştu.");
+            });
+        }
+    </script>
+}
+
+
+<style>
+    .table-responsive {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+        .table-responsive::-webkit-scrollbar {
+            height: 5px; /* Yatay kaydırma çubuğu yüksekliği */
+            background-color: #f5f5f5; /* Kaydırma çubuğu arka plan rengi */
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb {
+            background-color: #888; /* Kaydırma çubuğu rengi */
+            border-radius: 5px; /* Kenar yuvarlama */
+        }
+
+    .container {
+        max-width: 1200px; /* Tablonun genişliğini artırabilirsiniz */
+        margin: 0 auto; /* Tabloyu merkezlemek için */
+    }
+
+    .table-responsive::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Kaydırma çubuğu izleme arka plan rengi */
+    }
+    /* Tablo başlıkları */
+    .table th {
+        background-color: #007bff; /* Arka plan rengi */
+        color: white; /* Yazı rengi */
+    }
+
+    /* Tablo satırları */
+    .table tbody tr:nth-child(even) {
+        background-color: #f2f2f2; /* Arka plan rengi */
+    }
+
+    /* Dropdown menü */
+    .dropdown-menu {
+        border: none; /* Kenar çizgisi olmadan */
+    }
+
+        /* Dropdown içindeki butonlar */
+        .dropdown-menu button {
+            width: 100%; /* Tam genişlik */
+            margin: 5px 0; /* Kenar boşluğu */
+        }
+
+    /* Modal içeriği */
+    .modal-content {
+        background-color: #fff; /* Arka plan rengi */
+        border-radius: 10px; /* Kenar yuvarlama */
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Gölgelendirme */
+    }
+
+</style>
+
+

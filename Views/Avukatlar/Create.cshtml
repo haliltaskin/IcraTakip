@@ -1,0 +1,169 @@
+﻿    @model IcraTakipProgrami.Models.Avukat.AvukatCreateViewModel
+
+<div class="container">
+    <h2>Avukat Oluştur</h2>
+    <form asp-controller="Avukatlar" asp-action="Create" method="post">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="Ad" class="form-label">Ad</label>
+                    <input type="text"  maxlength="15" asp-for="Ad" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="Soyad" class="form-label">Soyad</label>
+                    <input type="text" maxlength="15" pattern="[a-zA-Z]+" asp-for=" Soyad" class="form-control" required>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="KullaniciAdi" class="form-label">Kullanıcı Adı</label>
+                    <input maxlength="15" pattern="^[a-zA-Z]+$" asp-for="KullaniciAdi" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="Tckn" class="form-label">Tckn</label>
+                    <input asp-for="Tckn"  type="number" oninput="checkLength(this)" class="form-control" required>
+                </div>
+            </div>
+            </div>
+
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="VergiNo" class="form-label">Vergi No</label>
+                        <input maxlength="15" type="number" asp-for="VergiNo" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="CepNo" class="form-label">Cep No</label>
+                        <input maxlength="11" type="number" asp-for="CepNo" class="form-control" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="AvansHesapSubesi" class="form-label">Avans Hesap Şubesi</label>
+                        <select asp-for="AvansHesapSubesi" class="form-select form-select-md">
+                            <option value="">Seçiniz</option>
+                            <option value="Maltepe">Maltepe</option>
+                            <option value="Kadıköy">Kadıköy</option>
+                            <option value="Ataşehir">Ataşehir</option>
+                            <option value="Pendik">Pendik</option>
+                            <option value="Kartal">Kartal</option>
+                            <option value="Küçükyalı">Küçükyalı</option>
+
+                        </select>
+                    </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                        <label asp-for="AvansHesapNo"  class="form-label">Avans Hesap No</label>
+                        <input maxlength="15" asp-for="AvansHesapNo" type="number" name="AvansHesapNo" class="form-control" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="AvukatTipi" class="form-label">Avukat Tipi</label>
+                        <select asp-for="AvukatTipi" class="form-select form-select-md">
+                            <option value="">Seçiniz</option>
+                            <option value="Mistral">Mistral</option>
+                            <option value="Kadrolu">Kadrolu</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label asp-for="VadesizHesapSubesi" class="form-label">Vadesiz Hesap Şubesi</label>
+                        <select asp-for="VadesizHesapSubesi" class="form-select form-select-md">
+                            <option value="">Seçiniz</option>
+                            <option value="Maltepe">Maltepe</option>
+                            <option value="Kadıköy">Kadıköy</option>
+                            <option value="Ataşehir">Ataşehir</option>
+                            <option value="Pendik">Pendik</option>
+                            <option value="Kartal">Kartal</option>
+                            <option value="Küçükyalı">Küçükyalı</option>
+
+                        </select>
+                    </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="mb-3">
+                        <label asp-for="VadesizHesapNo" class="form-label">Vadesiz Hesap No</label>
+                        <input maxlength="15" asp-for="VadesizHesapNo" type="number" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="EmailAdres" class="form-label">Email Adres</label>
+                        <input maxlength="15" asp-for="EmailAdres" class="form-control" required>
+                </div>
+            </div>
+       
+
+            
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="TamAdres" class="form-label">Tam Adres</label>
+                        <input maxlength="45" pattern="^[a-zA-Z]+$" asp-for="TamAdres" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="HesapAktifMi" class="form-label">Hesap Aktif Mi</label>
+                        <input type="checkbox" class="form-check-input" asp-for="HesapAktifMi" style="margin-left: 10px;" required>
+                </div>
+            </div>
+            </div>
+      
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary"> Kaydet</button>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    function checkLength(input) {
+        if (input.value.length > 11) {
+            input.value = input.value.slice(0, 11);
+        }
+        if (input.value.length < 11) {
+            input.value = input.value.slice(0, 11);
+        }
+    }
+
+    
+</script>
+
+
+<style>
+
+    /* Up ve Down oklarını gizle */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield; /* Firefox için */
+    }
+</style>

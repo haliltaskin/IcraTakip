@@ -1,0 +1,115 @@
+﻿@model IcraTakipProgrami.Models.Urun.UrunlerCreateViewModel
+@{
+    <div class="container">
+        <h2>Ürün Oluştur</h2>
+
+        <form asp-controller="Urunler" asp-action="Create" method="post">
+            <div class="row justify-content-center">
+                <div class="col-sm-6">
+            <div class="mb-3">
+                <label asp-for="MusteriId" class="form-label">Müşteri</label>
+                <select id="musteriDropdown" class="form-select form-select-md" asp-for="MusteriId">
+                    <option value="">Seçiniz</option>
+                    @foreach (var musteri in Model.MusteriEkleListesi)
+                    {
+                        <option value="@musteri.Value">@musteri.Text</option>
+                    }
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="AvukatId" class="form-label">Avukat</label>
+                <select id="avukatDropdown" class="form-select form-select-md" asp-for="AvukatId">
+                    <option value="">Seçiniz</option>
+                    @foreach (var avukat in Model.AvukatEkleListesi)
+                    {
+                        <option value="@avukat.Value">@avukat.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <label maxlength="15" asp-for="UrunAdi" class="form-label">Urun Adi</label>
+                <input asp-for="UrunAdi" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="KrediMudiNo" class="form-label">Kredi Mudi No</label>
+                <input maxlength="15" asp-for="KrediMudiNo" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="TakipMiktari" class="form-label">Takip Miktarı</label>
+                <input maxlength="15" asp-for="TakipMiktari" class="form-control">
+            </div>
+                  <div class="mb-3">
+                        <label asp-for="DovizTipi" class="form-label">Döviz Tipi</label>
+                        <select asp-for="DovizTipi" class="form-select form-select-md">
+                            <option value="">Seçiniz</option>
+                            <option value="TL">TL</option>
+                            <option value="Dolar">Dolar</option>
+                            <option value="Euro">Euro</option>
+                            <option value="Sterlin">Sterlin</option>
+                            <option value="Yen">Yen</option>
+                            <option value="Frank">Frank</option>
+                            <option value="Rub">Rub</option>
+                            <option value="Lira">Lira</option>
+                            <option value="Kron">Kron</option>
+                            <option value="Riyal">Riyal</option>
+                            <option value="Dinar">Dinar</option>
+                        </select>
+                    </div>
+
+            <div class="mb-3">
+                <label asp-for="AylikFaizOrani" class="form-label">Aylik Faiz Orani</label>
+                <input maxlength="15" asp-for="AylikFaizOrani" class="form-control">
+            </div>
+            </div>
+             <div class="col-sm-6">
+
+            <div class="mb-3">
+                <label asp-for="TakipTarihi" class="form-label">Takip Tarihi</label>
+                        <input type="date" value="" asp-for="TakipTarihi" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="MasrafMudiNo" class="form-label">Masraf Mudi No</label>
+                <input maxlength="15" asp-for="MasrafMudiNo" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="MasrafBakiyesi" class="form-label">Masraf Bakiyesi</label>
+                <input maxlength="15" asp-for="MasrafBakiyesi" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="FaizMudiNo" class="form-label">Faiz Mudi No</label>
+                <input maxlength="15" asp-for="FaizMudiNo" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="FaizBakiyesi" class="form-label">Faiz Bakiyesi</label>
+                <input maxlength="15" asp-for="FaizBakiyesi" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="TakipBirimKodu" class="form-label">Takip Birim Kodu</label>
+                <input maxlength="15" asp-for="TakipBirimKodu" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="TakipMudiNo" class="form-label">Takip Mudi No</label>
+                <input maxlength ="15" asp-for="TakipMudiNo" class="form-control">
+            </div>
+
+            <div class="mb-4">
+                <button style="margin-bottom: 40px;" type="submit" class="btn btn-primary"> Kaydet</button>
+            </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+}
+
+
+<style>
+    .btn-primary {
+        width: 100%;
+        font-size: 1rem; /* İstediğiniz boyutta bir font büyüklüğü belirleyin */
+        display: block;
+    }
+</style>
+

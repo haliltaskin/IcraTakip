@@ -1,0 +1,102 @@
+﻿@model IcraTakipProgrami.Models.Ihtar.IhtarCreateViewModel
+@{
+        <div class="container">
+        <h2>İhtar Oluştur</h2>
+
+            <form asp-controller="Ihtarlar" asp-action="Create" method="post">
+            <div class="row justify-content-center">
+                <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="Borclu" class="form-label">Borclu</label>
+                        <select  id="musteriDropdown" onchange="abc()" class="form-select form-select-md" asp-for="Borclu" required>
+                        <option value="">Seçiniz</option>
+                        @foreach (var musteri in Model.MusteriEkleListesi)
+                    {
+                            <option value="@musteri.Value">@musteri.Text</option>
+                    }
+                    </select>
+                </div>
+            
+                    <div class="mb-3">
+                        <label asp-for="MusteriUrunleri" class="form-label">Ürünler</label>
+                        <select itemid="urundropdown" class="form-select form-select-md" asp-for="MusteriUrunleri">
+                            <option value=""> Seçiniz</option>
+
+
+                        </select>
+                    </div>
+                <div class="mb-3">
+                        <label asp-for="NoterAd" class="form-label">Noter Ad</label>
+                        <input asp-for="NoterAd" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="IhtarTarih" class="form-label">İhtar Tarih</label>
+                        <input type="date" asp-for="IhtarTarih" type="date" id="IhtarTarih" class="form-control" value="" required>
+
+                </div>
+                <div class="mb-3">
+                    <label asp-for="IhtarnameSuresi" class="form-label">İhtarname Suresi</label>
+                        <input asp-for="IhtarnameSuresi" class="form-control" required>
+                </div>
+                </div>
+                    <div class="col-sm-6">
+
+                <div class="mb-3">
+                    <label asp-for="TebligTarihi" class="form-label">Tebliğ Tarihi</label>
+                        <input type="date" asp-for="TebligTarihi" value="" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="IhtarTebligGirisTarih" class="form-label">İhtar Tebliğ Giris Tarih</label>
+                        <input type="date" value="" asp-for="IhtarTebligGirisTarih" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="KatTarih" class="form-label">Kat Tarih</label>
+                        <input type="date" value="" asp-for="KatTarih" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="IhtarnameNakitTutarı" class="form-label">İhtarname Nakit Tutarı</label>
+                        <input asp-for="IhtarnameNakitTutarı" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="IhtarnameSuresi" class="form-label">İhtarname Suresi</label>
+                        <input asp-for="IhtarnameSuresi" class="form-control" required>
+                </div>
+                    <div class="mb-3">
+                        <label asp-for="IhtarnameGayriNakitTutarı" class="form-label">İhtarname Gayri Nakit Tutarı</label>
+                        <input asp-for="IhtarnameGayriNakitTutarı" class="form-control" required>
+                    </div>
+
+              
+
+                <div class="mb-3">
+                    <button style="margin-bottom: 40px;" type="submit" class="btn btn-primary"> Kaydet</button>
+                </div>
+
+                </div>
+            </div>
+            </form>
+            </div>
+}
+<script>
+    function abc() {
+        var musteriId = document.getElementById("musteriDropdown").value;
+
+        // AJAX isteği yap
+        $.ajax({
+            type: "GET",
+            url: "/Ihtarlar/GetUrunler",
+            data: { musteriId: musteriId },
+            success: function (data) {
+                // Gelen veriyi kullanarak ürün dropdown'ını güncelle
+                var urunDropdown = document.getElementById("musteriDropdown").parentNode.nextElementSibling.querySelector("select");
+                urunDropdown.innerHTML = "";
+                data.forEach(function (urun) {
+                    var option = document.createElement("option");
+                    option.value = urun.value;
+                    option.text = urun.text;
+                    urunDropdown.appendChild(option);
+                });
+            }
+        });
+    }
+</script>

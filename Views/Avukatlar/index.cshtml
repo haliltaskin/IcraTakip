@@ -1,0 +1,151 @@
+﻿@model IEnumerable<IcraTakipProgrami.Models.Avukatlar>
+
+<div class="container" >
+
+    <div class="modal fade bd-example-modal-lg" id="create" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal içeriği buraya gelecek -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content halildeneme">
+                <!-- AJAX isteği sonucunda dönen HTML içeriği buraya yerleştirilecek -->
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="table-responsive" style="max-width: 100%; overflow-x: auto;">
+        <button type="button" class="btn btn-primary mb-3" style="float:right" onclick="Create()">Avukat Ekle</button>
+
+        <table class="table table-striped ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Ad</th>
+                    <th scope="col">Soyad</th>
+                    <th scope="col">Kullanıcı Adı</th>
+                    <th scope="col">TCKN</th>
+                    <th scope="col">Vergi No</th>
+                    <th scope="col">Cep No</th>
+                    <th scope="col">Avans Hesap Subesi</th>
+                    <th scope="col">Avans Hesap No</th>
+                    <th scope="col">Avukat Tipi</th>
+                    <th scope="col">Vadesiz Hesap Subesi</th>
+                    <th scope="col">Vadesiz Hesap No</th>
+                    <th scope="col">Email Adres</th>
+                    <th scope="col">Tam Adres</th>
+                    <th scope="col"></th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var avukat in Model)
+                {
+                    <tr>
+                        <td>@avukat.Ad</td>
+                        <td>@avukat.Soyad</td>
+                        <td>@avukat.KullaniciAdi</td>
+                        <td>@avukat.Tckn</td>
+                        <td>@avukat.VergiNo</td>
+                        <td>@avukat.CepNo</td>
+                        <td>@avukat.AvansHesapSubesi</td>
+                        <td>@avukat.AvansHesapNo</td>
+                        <td>@avukat.AvukatTipi</td>
+                        <td>@avukat.VadesizHesapSubesi</td>
+                        <td>@avukat.VadesizHesapNo</td>
+                        <td>@avukat.EmailAdres</td>
+                        <td>@avukat.TamAdres</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>&#8942;</span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <div style="width:50px; margin-left:30px;text-align:center">
+
+                                        
+                                        <button type="submit" onclick="openEditModal(@avukat.Id)" class="btn btn-success" style="width:100px;margin:auto; height:30px">Güncelle</button>
+
+
+                                    <form asp-action="Delete"  method="post" onsubmit="return confirm('emin misiniz')" style="display: inline-block;">
+                                        <input asp-action="Delete" type="hidden" value="@avukat.Id" name="id">
+                                        <button style="width:100px;margin-top:10px; height:30px" type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+
+                                    </div>
+                                 
+                                </ul>
+                            </div>
+
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+<style>
+        .table-responsive {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+.table-responsive::-webkit-scrollbar {
+    height: 5px; /* Yatay kaydırma çubuğu yüksekliği */
+    background-color: #f5f5f5; /* Kaydırma çubuğu arka plan rengi */
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: #888; /* Kaydırma çubuğu rengi */
+    border-radius: 5px; /* Kenar yuvarlama */
+}
+
+    .container {
+        max-width: 1200px; /* Tablonun genişliğini artırabilirsiniz */
+        margin: 0 auto; /* Tabloyu merkezlemek için */
+    }
+
+    .table-responsive::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Kaydırma çubuğu izleme arka plan rengi */
+    }
+</style>
+
+<script>
+    function Create() {
+        var url = '@Url.Action("CreateModal", "Avukatlar")';
+        $.ajax({
+            type: 'get',
+            url: url
+        }).then((result) => {
+            $(".modal-content").html(result);
+            $("#create").modal('show');
+        }).catch((e) => {
+            alert("Bir hata oluştu.");
+        });
+    }
+
+    function openEditModal(id) {
+        var url = '/Avukatlar/EditModal/' + id;
+        console.log(url); // Kontrol için URL'yi yazdır
+        $.ajax({
+            type: 'get',
+            url: url
+        }).then((result) => {
+            debugger;
+            $(".halildeneme").html(result);
+            $("#edit").modal('show');
+        }).catch((e) => {
+            alert("Bir hata oluştu.");
+        });
+    }
+
+</script>

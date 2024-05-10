@@ -1,0 +1,124 @@
+﻿@model IcraTakipProgrami.Models.Musteri.MusteriCreateViewModel
+@{
+        <div class="container">
+        <h2>Müşteri Oluştur</h2>
+            <form asp-controller="Musteriler" asp-action="Create" method="post">
+                <div class="row justify-content-center">
+                    <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="Ad" class="form-label">Ad</label>
+                            <input maxlength="15" asp-for="Ad" class="form-control" required>
+
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Soyad" class="form-label">Soyad</label>
+                            <input maxlength="15" asp-for="Soyad" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Tckn" class="form-label">Tckn</label>
+                            <input maxlength="11" asp-for="Tckn" class="form-control" required>
+                </div>
+               
+                <div class="mb-3">
+                    <label asp-for="DogumTarihi" class="form-label">Doğum Tarihi</label>
+                            <input maxlength="15" type="date" asp-for="DogumTarihi" class="form-control" required>
+                </div>
+                    
+
+                <div class="mb-3">
+                            <label asp-for="Cinsiyet" class="form-label">Cinsiyet</label>
+                            <select asp-for="Cinsiyet" class="form-select form-select-md">
+                                <option value="">Seçiniz</option>
+                                <option value="Erkek">Erkek</option>
+                                <option value="Kadın">Kadın</option>
+                            </select>
+                </div>
+                   
+                <div class="mb-3">
+                    <label asp-for="BabaAd" class="form-label">Baba Ad</label>
+                    <input maxlength ="15" asp-for="BabaAd" class="form-control">
+                </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                <div class="mb-3">
+                    <label asp-for="AnneAd" class="form-label">Anne Ad</label>
+                    <input maxlength="15" asp-for="AnneAd" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Sehir" class="form-label">Şehirler</label>
+                    <select itemid="sehirDropDown" onchange="sehirchange()" class="form-select form-select-md" asp-for="Sehir">
+                                <option value=""> Seçiniz</option>
+                                @foreach (var sehir in Model.SehirEkleListesi)
+                                {
+                                        <option itemid="sehirId" value="@sehir.Value">@sehir.Text</option>
+                                }
+                                
+                                
+                            </select>
+                </div>
+                        <div class="mb-3">
+                            <label asp-for="Ilce" class="form-label">İlçeler</label>
+                            <select itemid="ilceDropDown" class="form-select form-select-md" asp-for="Ilce">
+                                <option value=""> Seçiniz</option>
+                              
+                               
+                            </select>
+                        </div>
+              
+                <div class="mb-3">
+                    <label asp-for="Semt" class="form-label">Semt</label>
+                    <input asp-for="Semt" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MistralMusteriTipi" class="form-label">Mistral Musteri Tipi</label>
+                            <select asp-for="MistralMusteriTipi" class="form-select form-select-md" required>
+                        <option  value="">Seçiniz</option>
+                                <option value="Bireysel">Bireysel</option>
+                                <option value="Kurumsal">Kurumsal</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="HayattaMı" class="form-label">Hayatta Mı</label>
+                    <input type="checkbox" class="form-check-input" asp-for="HayattaMı" style="margin-left: 10px;">
+                </div>
+                <div class="mb-3">
+                    <button style="margin-bottom: 40px;" type="submit" class="btn btn-primary"> Kaydet</button>
+                </div>
+                </div>
+                </div>
+            </form>
+        </div>
+}
+
+
+            <script>
+
+
+    function sehirchange() {
+        var secilenSehirId = document.getElementById('Sehir').value;
+        var url = '/Musteriler/IlceSet';
+        // AJAX ile ilgili şehrin ilçelerini getir
+        $.ajax({
+            url: url, // İlçeleri getirilecek Action'ın URL'si
+            type: 'GET',
+            data: { sehirId: secilenSehirId }, // Seçilen şehir ID'sini parametre olarak gönder
+            success: function (data) {
+                debugger;
+                // Başarılı bir şekilde veriler alındığında yapılacak işlemler
+                // İlçe dropdown listesini temizle
+                $('#Ilce').empty();
+                // Gelen verileri ilçe dropdown listesine ekle
+
+                for (var i = 0; i < data.ilceListesi.result.length; i++) {
+                    $('#Ilce').append('<option value="' + data.ilceListesi.result[i].id + '">' + data.ilceListesi.result[i].ilceadi + '</option>');
+                }
+
+            },
+            error: function () {
+                // Hata durumunda yapılacak işlemler
+                alert('Bir hata oluştu, ilçeler getirilemedi.');
+            }
+        });
+    }
+            </script>

@@ -1,0 +1,139 @@
+﻿@model IEnumerable<IcraTakipProgrami.Models.IcraTakip.IcraTakipViewModel>
+@{
+    <button type="button" style="float:right;" class="btn btn-primary" onclick="Create()">İcra Ekle</button>
+
+    <div class="modal fade bd-example-modal-lg" id="create" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                ...
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" id="edit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content halildeneme">
+                <!-- Modal içeriği buraya gelecek -->
+            </div>
+        </div>
+    </div>
+
+    <div style=" margin: 0 auto; ">
+        <div></div>
+        <table class="table" style="width: 100%; margin: 0 auto;">
+            <thead>
+                <tr>
+                    <th>Borçlu</th>
+                    <th>Avukat</th>
+                    <th>Takip Tarihi</th>
+                    <th>Takip Tipi</th>
+                    <th>İhtarlar</th>
+                    <th>İhtar Konusu Ürünler</th>
+                    <th>İcra Müdürlüğü</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var IcraTakibi in Model)
+                {
+                    <tr>
+                        <td>@IcraTakibi.BorcluAd</td>
+                        <td>@IcraTakibi.AvukatAd</td>
+                        <td>@IcraTakibi.TakipTarihi</td>
+                        <td>@IcraTakibi.TakipTipi</td>
+                        <td>@IcraTakibi.IhtarlarAd</td>
+                        <td>@IcraTakibi.IhtarKonusuUrunAd</td>
+                        <td>@IcraTakibi.IcraMudurlugu</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>&#8942;</span>
+
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+                                    <button type="submit" onclick="openEditModal(@IcraTakibi.Id)" class="btn btn-success" style="width:100px;margin:auto; height:30px">Güncelle</button>
+
+                                    <form asp-action="Delete" method="post" onsubmit="return confirm('Emin misiniz')" style="display: inline-block;">
+                                        <input type="hidden" value="@IcraTakibi.Id" name="id">
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+
+
+
+                                </ul>
+                            </div>
+
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+<script>
+    function Create() {
+
+        var url = '@Url.Action("CreateModal", "IcraTakibi")';
+        $.ajax({
+            type: 'get',
+            url: url
+        }).then((result) => {
+            $(".modal-content").html(result);
+            $("#create").modal('show');
+        }).catch((e) => {
+            alert("didn't work");
+        });
+    }
+
+        function openEditModal(id) {
+            var url = '/IcraTakibi/EditModal/' + id;
+            console.log(url); // Kontrol için URL'yi yazdır
+            $.ajax({
+                type: 'get',
+                url: url
+            }).then((result) => {
+                debugger;
+                $(".halildeneme").html(result);
+                $("#edit").modal('show');
+            }).catch((e) => {
+                alert("Bir hata oluştu.");
+            });
+        }
+
+</script>
+}
+
+
+<style>
+    .table-responsive {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+        .table-responsive::-webkit-scrollbar {
+            height: 5px; /* Yatay kaydırma çubuğu yüksekliği */
+            background-color: #f5f5f5; /* Kaydırma çubuğu arka plan rengi */
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb {
+            background-color: #888; /* Kaydırma çubuğu rengi */
+            border-radius: 5px; /* Kenar yuvarlama */
+        }
+
+    .container {
+        max-width: 1200px; /* Tablonun genişliğini artırabilirsiniz */
+        margin: 0 auto; /* Tabloyu merkezlemek için */
+    }
+
+    .table-responsive::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Kaydırma çubuğu izleme arka plan rengi */
+    }
+
+    .dropdown::after {
+        display: none;
+    }
+
+</style>
